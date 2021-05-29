@@ -6,10 +6,32 @@ const port = process.env.port || 8000; //서버의 포트번호를 지정해줍�
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// 이후 데이터를 주고 받을 때 post방식을 사용하기 위한 초기 설정입니다. 무시하시면 됩니다.
 
-app.get('/api/file', (req, res) => {
-    res.send({ message: '자료조사 봇 서버에 오신걸 환영합니다.' });
+const axios = require('axios');
+const cheerio = require('cheerio');
+
+const getHTML = async (keyword) => {
+    try {
+        return await axios.get('https://search.daum.net/search?w=tot&DA=YZR&t__nil_searchbox=btn&sug=&sugo=&sq=&o=&q=' + encodeURI(keyword));
+    } catch (e) {
+        console.log(e);
+    }
+};
+
+//갖고 온 html을 파싱
+const parse = async (keyword) => {
+    const html = await getHTML(keyword);
+    const $ = cheerio.load(html.data); //jquery 사용
+    const $courseList = $('.keyword');
+    let lists = [];
+    $courseList.each((idx, node) => {
+        lists.push($(node).text());
+    });
+    console.log(lists);
+};
+
+app.get('/api/search', (req, res) => {
+    res.send(parse('자바스크립트'));
 });
 
 app.listen(port, () => {

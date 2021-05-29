@@ -3,9 +3,9 @@ const search = document.querySelector('#search'),
     searchButton = document.querySelector('#searchButton');
 
 //검색 버튼 클릭하면 실행되는 함수
-search.click(function () {
-    searchButton.submit();
-});
+// search.click(function () {
+//     searchButton.submit();
+// });
 
 const triggers = Array.from(document.querySelectorAll('[data-toggle="collapse"]'));
 
@@ -45,3 +45,6 @@ document.querySelector('#sign_in').addEventListener('click', function () {
         document.querySelector('#user_email').innerHTML = response.email;
     });
 });
+
+
+export const search;
