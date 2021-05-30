@@ -45,6 +45,3 @@ document.querySelector('#sign_in').addEventListener('click', function () {
         document.querySelector('#user_email').innerHTML = response.email;
     });
 });
-
-
-export const search;

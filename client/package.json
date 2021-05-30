@@ -2,8 +2,9 @@
     "name": "invest_bot",
     "version": "1.0.0",
     "scripts": {
-        "client": "cd client && yarn start",
-        "server": "node ./server/server.js"
+        "start": "node ./redux/searchmiddle.js",
+        "build": "babel src -d lib",
+        "test": "jest"
     },
     "dependencies": {
         "axios": "^0.21.1",

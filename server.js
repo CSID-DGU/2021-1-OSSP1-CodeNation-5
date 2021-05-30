@@ -1,8 +1,22 @@
+// const http = require('http');
+// const data = require('./data/data.json');
+
+// const server = http.createServer((req, res) => {
+//     if (req.url === '/api/data') {
+//         res.writeHead(200, { 'Content-Type': 'application/json' });
+//         res.write(JSON.stringify());
+//     }
+// });
+
+// const port = process.env.port || 5000; //서버의 포트번호를 지정해줍니다. 5000번에서 확인할 수 있습니다.
+
+// server.listen(port, () => console.log(`listening on port${port}`));
+/////////////
 const bodyParser = require('body-parser');
 const express = require('express'); //express 프레임워크 사용합니다.
 const app = express();
 
-const port = process.env.port || 8000; //서버의 포트번호를 지정해줍니다. 5000번에서 확인할 수 있습니다.
+const port = process.env.port || 5000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -25,7 +39,9 @@ const parse = async (keyword) => {
     const $courseList = $('.keyword');
     let lists = [];
     $courseList.each((idx, node) => {
-        lists.push($(node).text());
+        lists.push({
+            keyword: $(node).text(),
+        });
     });
     console.log(lists);
 };

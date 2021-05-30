@@ -3,6 +3,16 @@ body{
     height: 600px;
 }
 
+h1{
+    font-size: 25px;
+    color: #0C6EFD; 
+    text-align: center;
+}
+
+#inputbox{
+    width: 200px;
+}
+
 .image{
     width: 100px;
     height: 100px;

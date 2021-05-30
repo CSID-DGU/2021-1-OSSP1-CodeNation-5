@@ -2,9 +2,11 @@
     "name": "invest_bot",
     "version": "1.0.0",
     "scripts": {
-        "client": "npm run start --prefix client",
-        "server": "node ./server/server.js",
-        "dev": "concurrently \"npm run client\" \"npm run server\""
+        "client": "cd client && npm run start",
+        "server": "node ./server.js",
+        "dev": "nodemon ./server.js",
+        "build": "babel src -d lib",
+        "test": "jest"
     },
     "dependencies": {
         "axios": "^0.21.1",
